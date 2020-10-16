@@ -6,3 +6,4 @@ While most instructions provided in courses use pure command line, I think it is
 
 [Part A/B](/partab/README.md)
 
+[Useful Scripts](/skip/README.md)
