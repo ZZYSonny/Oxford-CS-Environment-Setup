@@ -1,0 +1,17 @@
+{
+	"sqltools.connections": [
+		{
+			"previewLimit": 50,
+			"server": "se.zzysonny.me",
+			"port": 5432,
+			"driver": "PostgreSQL",
+			"name": "Practical",
+			"database": "dbprac1",
+			"username": "your_user_namee",
+			"password": ""
+		}
+	],
+	"sqltools.autoConnectTo": "Practical",
+	"sqltools.highlightQuery": true,
+	"sqltools.flattenGroupsIfOne": true
+}

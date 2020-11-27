@@ -1,0 +1,61 @@
+{
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "Build",
+			"command": "make",
+			//"args": ["${fileBasenameNoExtension}.hex"],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"presentation": {
+				"echo": true,
+				"reveal": "silent",
+				"revealProblems": "onProblem",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": false,
+				"clear": true
+			},
+			"problemMatcher": {
+				//"applyTo": "openDocuments",
+				"fileLocation": ["relative", "${fileDirname}"],
+				"source": "make",
+				"base": "$gcc"
+			}
+		},
+		{
+			"type": "shell",
+			"label": "QuickLaunch",
+			"command": "Connect-MicroBIT ttyS2",
+			"runOptions": {
+				"instanceLimit": 2
+			},
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": true,
+				"panel": "shared",
+				"showReuseMessage": false,
+				"clear": true
+			},
+			"isBackground": true,
+			"problemMatcher": {
+				"pattern": [
+					{
+						"regexp": ".",
+						"file": 1,
+						"location": 2,
+						"message": 3
+					}
+				],
+				"background": {
+					"activeOnStart": true,
+					"beginsPattern": ".",
+					"endsPattern": ".",
+				}
+			}
+		}
+	],
+	"version": "2.0.0"
+}

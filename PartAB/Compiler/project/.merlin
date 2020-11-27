@@ -1,0 +1,7 @@
+S lab4
+B lab4
+S lib
+B lib
+S tools
+B tools
+FLG -pp ./tools/nodexp

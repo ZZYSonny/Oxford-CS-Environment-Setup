@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "OCaml Debug",
+        "type": "ocaml-debugger",
+        "request": "launch",
+        "program": "${fileDirname}/ppc",
+        "arguments": ["test.p"],
+        "cwd": "${fileDirname}",
+        "console": "internalConsole",
+        "preLaunchTask": "build"
+      }
+    ]
+  }
+  
