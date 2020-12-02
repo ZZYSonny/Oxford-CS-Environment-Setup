@@ -79,3 +79,30 @@ In lab1-lab4, the compiled ocaml program is `ppc`. The argument is the file we w
 
 ### [settings.json](project/.vscode/settings.json)
 Some useful setting for the project. Avoid showing unnecessary cmo files in explorer.
+
+## Debug arm binary from lab 4 on x64 linux
+
+Install gdb-multiarch
+```bash
+sudo apt install gdb-multiarch
+```
+
+Run the binary with qemu, with a port gdb can listen
+```bash
+qemu-arm -g 12345 ./b.out
+```
+
+Run GDB
+```bash
+gdb-multiarch b.out --eval-command "target remote 127.0.0.1:12345" --eval-command "layout asm"
+```
+
+Some useful GDB command
+|GDB Command|Effect|
+|-----------|------|
+|si|run one instruction (follow function call)|
+|ni|run one instruction (do not debug function call)
+|break *_start+4|breakpoint on a address in assemblt|
+|info register r1 r2 r3 r4|show value of r1-r4 once|
+|display $r1|show value of r1 every step|
+|backtrace|show stack frame|
