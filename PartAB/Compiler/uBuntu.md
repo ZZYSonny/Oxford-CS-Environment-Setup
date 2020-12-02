@@ -15,6 +15,17 @@ opam init -y --compiler=4.07.1 --disable-sandboxing
 opam switch create 4.07.1
 ```
 
+Add ocamlc to path
+```bash
+opam init
+````
+```
+Do you want opam to modify ~/.profile? [N/y/f]
+(default is 'no', use 'f' to choose a different file) y
+A hook can be added to opam's init scripts to ensure that the shell remains in sync with the opam environment when they are
+loaded. Set that up? [y/N] N
+```
+
 Install [Ocamllsp](https://github.com/ocaml/ocaml-lsp) for language server
 ```
 opam install ocaml-lsp-server
