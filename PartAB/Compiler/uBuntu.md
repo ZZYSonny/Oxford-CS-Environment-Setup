@@ -80,6 +80,17 @@ In lab1-lab4, the compiled ocaml program is `ppc`. The argument is the file we w
 ### [settings.json](project/.vscode/settings.json)
 Some useful setting for the project. Avoid showing unnecessary cmo files in explorer.
 
+You may need to change value of switch if you are using other version of ocaml.
+```json
+{
+    ...
+    "ocaml.sandbox": {
+        "kind": "opam",
+        "switch": "4.07.1"  <-- Here
+    },
+}
+```
+
 ## Debug arm binary from lab 4 on x64 linux
 
 Install gdb-multiarch
