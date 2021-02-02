@@ -1,7 +1,7 @@
 
 # Tool(chain)
 ## opam & ocaml
-The default version of ocaml from apt is 4.08.1. But the debugging adapter is unmaintained and only work in lower version. So now we are going to manually install opam and ocaml 4.07.1. (You can use apt to install ocaml and opam if you don't want debug support. It is actually rarely used.)
+The default version of `ocaml` from `apt` is 4.08.1. But the debugging adapter `earlybird` requires some `ocaml` version (>=4.11.0 & <4.12.0 when written). Below is steps to install a specific version of `ocaml` through `opam`.
 
 Install opam and dependencies
 ```bash
@@ -9,10 +9,10 @@ sudo apt install m4 gcc binutils-dev make pkg-config
 sh <(curl -sL https://raw.githubusercontent.com/ocaml/opam/master/shell/install.sh)
 ```
 
-Install [Ocaml 4.07.1 and create switch](https://github.com/janestreet/install-ocaml)
+Install [Ocaml 4.11.1 and create switch](https://github.com/janestreet/install-ocaml)
 ```bash
-opam init -y --compiler=4.07.1 --disable-sandboxing
-opam switch create 4.07.1
+opam init -y --compiler=4.11.1 --disable-sandboxing
+opam switch create 4.11.1
 ```
 
 Add ocamlc to path
