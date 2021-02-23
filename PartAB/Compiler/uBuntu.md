@@ -1,5 +1,8 @@
-# Tool(chain)
-## opam & ocaml
+# Compiler Setup for uBuntu
+## Screenshot
+![](pic/document.png)
+## Environment
+### OCaml
 The default version of `ocaml` from `apt` may not match requirement of tools we are going to install later. Below is steps to install a specific version of `ocaml` through `opam`.
 
 Install opam and dependencies
@@ -35,14 +38,23 @@ Install [Earlybird](https://github.com/hackwaly/ocamlearlybird) for debugging su
 opam install earlybird
 ```
 
-## ARM
+Check everything is correctly installed and in path
+```bash
+$ ocamllsp --version
+1.4.0
+$ ocamlc --version
+4.11.1
+$ ocamlearlybird --version
+ocamlearybird: unknown option `--version'.
+```
+
+### Qemu for ARM
 In Lab4, the practical requires us to compile project for ARM devices. So these tools are needed.
 ```
 apt install qemu-user gcc-arm-linux-gnueabihf
 ```
 
-# VSCode
-## Extension to Install
+### VSCode Extension
 [OCaml Platform](https://marketplace.visualstudio.com/items?itemName=ocamllabs.ocaml-platform) Need to `make` once at least. Otherwise it does not show any information.
 
 [OCaml Debugger](https://marketplace.visualstudio.com/items?itemName=hackwaly.ocaml-debugger) Need to add `-g` flag to every `ocamlc` in `Makefile`. You can search for `ocamlc` and replace it with `ocamlc -g` for the first few practicals.
@@ -50,7 +62,7 @@ apt install qemu-user gcc-arm-linux-gnueabihf
 ## Project Setup
 Please see [project folder](project/)
 
-## Project Setup Explanation
+### Project Setup Explanation
 ### [.merlin](project/.merlin)
 First few lines specifies source file included for language support. \
 Last FLG line is for lab4. The ocaml source code is first 
@@ -84,9 +96,7 @@ In lab1-lab4, the compiled ocaml program is `ppc`. The argument is the file we w
 ```
 
 ### [settings.json](project/.vscode/settings.json)
-Some useful setting for the project. Avoid showing unnecessary cmo files in explorer.
-
-You may need to change value of switch if you are using other version of ocaml.
+Some useful setting for the project. Avoid showing unnecessary cmo files in explorer. You may need to change value of switch if you are using other version of ocaml.
 ```json
 {
     ...
@@ -109,9 +119,9 @@ Run the binary with qemu, with a port gdb can listen
 qemu-arm -g 12345 ./b.out
 ```
 
-Run GDB
+Run GDB. Automatically connect to qemu, show assembly layout, go to breakpoint at pmain. (Which is start of pascal code)
 ```bash
-gdb-multiarch b.out --eval-command "target remote 127.0.0.1:12345" --eval-command "layout asm"
+gdb-multiarch b.out --eval-command "target remote 127.0.0.1:12345" --eval-command "layout asm" --eval-command "break *pmain" --eval-command "continue"
 ```
 
 Some useful GDB command
