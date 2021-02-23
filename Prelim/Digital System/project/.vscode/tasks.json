@@ -7,14 +7,17 @@
 			"args": [
 				"-mcpu=cortex-m0",
 				"-mthumb",
-				"-Wall",
+				//"-Wall",
 				"-nostdlib",
-				"-lgcc",
 				"-T",
 				"NRF51822.ld",
 				"-g",
 				"startup.c",
 				"${relativeFile}",
+				//needed for foo_*
+				"foo.s",
+				//replace this!
+				"C:\\Environment\\GNUArm\\lib\\gcc\\arm-none-eabi\\10.2.1\\thumb\\v6-m\\nofp\\libgcc.a",
 				"-o",
 				"output.elf"
 			],

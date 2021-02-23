@@ -48,16 +48,32 @@ ext install marus25.cortex-debug
 ```
 
 ## Example VSCode Project Folder
+### Setup
 - Open the folder in VSCode
-- Open file [c_cpp_properties.json](project/.vscode/c_cpp_properties.json). Change `compilerPath` to address of ToolChain in your computer. Also change the `intelliSenseMode`
-- Open file [ssod.c](project/ssod.c), press `F5` to start running and debugging
-- You can now see breakpoint met at init function. (First picture below)
-- After pressing `F5`, the program resumes, showing `SEVEN STARS OF DEATH` periodically. 
-- Or you can also Press `F1`, input `disassembly`, choose `Cortex-Debug: Set Force Disassembly`, then choose `Force`. You will see the second picture below. (Default is auto, when the program reaches some assembly file, assembly view will also be shown.)
+- Open file [c_cpp_properties.json](project/.vscode/c_cpp_properties.json). Change `compilerPath` to address of ToolChain in your computer. If you are using system other than windows, you also need to change `intelliSenseMode`.
+- Open [task.json](project/.vscode/task.json). Change the prefix of `libgcc.a` line to points to the correct file in your installation of compiler. 
 
+### LED Example
+- Open file `led.c`, press `F5` to start running and debugging
+- You can now see breakpoint met at init function.
+- After pressing `F5`, the program resumes, showing `SEVEN STARS OF DEATH` periodically. 
 ![](pic/source.png)
+- Or you can also Press `F1`, input `disassembly`, choose `Cortex-Debug: Set Force Disassembly`, then choose `Force`. You will see the second picture below.
 ![](pic/assembly.png)
 
-//Breakpoint at init function is specified in [launch.json](project/.vscode/launch.json). Without this settings, initial debugger behavior is a bit weird. 
+### Assembly Example
+- Open file `foo_break`, press `F5` to run.
+- Step into foo function, or add a breakpoint inside `foo.s`
+![](pic/foo.png)
 
-//Project file stripped down from 2019-2020 Digital system course practical.
+### Assembly + Serial Terminal Example
+- Open file `foo_serial.c`.
+- Start serial port terminal emulator.
+  - On windows, you may use puTTY.
+  - Or `tio -b 9600 ttyS[x]` where [x] is the serial port number appear in device manager minus 1.
+  - Mac and Linux missing.
+
+### PS
+- Project file stripped down from 2019-2020 Digital system course practical.
+- Breakpoint at init function is specified in `launch.json`. Without this settings, initial debugger behavior is a bit weird. 
+- You may need to change build task in `tasks.json` for later practicals.

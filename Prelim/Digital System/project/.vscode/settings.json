@@ -1,4 +1,7 @@
 {
+    "files.associations": {
+        "hardware.h": "c"
+    }
     //"cortex-debug.openocdPath": ""
     //"cortex-debug.armToolchainPath": ""
 }
