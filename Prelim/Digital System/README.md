@@ -49,6 +49,7 @@ ext install marus25.cortex-debug
 
 ## Example VSCode Project Folder
 - Open the folder in VSCode
+- Open file [c_cpp_properties.json](project/.vscode/c_cpp_properties.json). Change `compilerPath` to address of ToolChain in your computer. Also change the `intelliSenseMode`
 - Open file [ssod.c](project/ssod.c), press `F5` to start running and debugging
 - You can now see breakpoint met at init function. (First picture below)
 - After pressing `F5`, the program resumes, showing `SEVEN STARS OF DEATH` periodically. 
