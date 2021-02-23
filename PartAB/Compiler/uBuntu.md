@@ -1,7 +1,7 @@
 
 # Tool(chain)
 ## opam & ocaml
-The default version of `ocaml` from `apt` is 4.08.1. But the debugging adapter `earlybird` requires some `ocaml` version (>=4.11.0 & <4.12.0 when written). Below is steps to install a specific version of `ocaml` through `opam`.
+The default version of `ocaml` from `apt` may not match requirement of tools we are going to install later. Below is steps to install a specific version of `ocaml` through `opam`.
 
 Install opam and dependencies
 ```bash
@@ -18,7 +18,7 @@ opam switch create 4.11.1
 Add ocamlc to path
 ```bash
 opam init
-````
+```
 ```
 Do you want opam to modify ~/.profile? [N/y/f]
 (default is 'no', use 'f' to choose a different file) y
@@ -44,13 +44,9 @@ apt install qemu-user gcc-arm-linux-gnueabihf
 
 # VSCode
 ## Extension to Install
-[OCaml Platform](https://marketplace.visualstudio.com/items?itemName=ocamllabs.ocaml-platform)
+[OCaml Platform](https://marketplace.visualstudio.com/items?itemName=ocamllabs.ocaml-platform) Need to `make` once at least. Otherwise it does not show any information.
 
-Need to `make` once at least. Otherwise it does not show any information.
-
-[OCaml Debugger](https://marketplace.visualstudio.com/items?itemName=hackwaly.ocaml-debugger)
-
-Need to add `-g` flag to every `ocamlc` in `Makefile`. You can search for `ocamlc` and replace it with `ocamlc -g` for the first few practicals.
+[OCaml Debugger](https://marketplace.visualstudio.com/items?itemName=hackwaly.ocaml-debugger) Need to add `-g` flag to every `ocamlc` in `Makefile`. You can search for `ocamlc` and replace it with `ocamlc -g` for the first few practicals.
 
 ## Project Setup
 Please see [project folder](project/)
@@ -97,7 +93,7 @@ You may need to change value of switch if you are using other version of ocaml.
     ...
     "ocaml.sandbox": {
         "kind": "opam",
-        "switch": "4.07.1"  <-- Here
+        "switch": "4.11.1"  <-- Here
     },
 }
 ```

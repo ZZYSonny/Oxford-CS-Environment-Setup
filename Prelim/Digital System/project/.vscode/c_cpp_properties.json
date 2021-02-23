@@ -3,8 +3,8 @@
     "configurations": [
         {
             "name": "Win32",
-            "intelliSenseMode": "gcc-x64",
-            "compilerPath": "C:\\ProgramData\\gcc-arm-none-eabi\\bin\\arm-none-eabi-gcc.exe",
+            "intelliSenseMode": "windows-gcc-arm",
+            "compilerPath": "C:\\Environment\\GNUArm\\bin\\arm-none-eabi-gcc.exe",
 			"cStandard": "c11",
             "cppStandard": "c++14"
         }

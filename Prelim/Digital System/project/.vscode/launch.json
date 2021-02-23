@@ -2,29 +2,17 @@
 	"version": "1.0.0",
 	"configurations": [
 		{
-			"cwd": "${fileDirname}",
-			"executable": "foo.elf",
-			"name": "PyOCD(foo)",
+			"cwd": "${workspaceFolder}",
+			"executable": "output.elf",
+			"name": "Debug Microbit",
 			"request": "launch",
 			"type": "cortex-debug",
-			"servertype": "pyocd",
-			"postStartSessionCommands": [
-				"monitor reset",
-				"continue"
+			"servertype": "openocd",
+			"configFiles": [
+				"./openocd/cmsis-dap.cfg",
+				"./openocd/nrf51.cfg"
 			],
-			"preLaunchTask": "Build"
-		},
-		{
-			"cwd": "${fileDirname}",
-			"executable": "${fileBasenameNoExtension}.elf",
-			"name": "PyOCD(Cur)",
-			"request": "launch",
-			"type": "cortex-debug",
-			"servertype": "pyocd",
-			"postStartSessionCommands": [
-				"monitor reset",
-				"continue"
-			],
+			"runToEntryPoint": "init",
 			"preLaunchTask": "Build"
 		}
 	]

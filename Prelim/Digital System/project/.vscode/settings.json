@@ -1,30 +1,4 @@
 {
-    "files.exclude": {
-        "**/*.o":true,
-        "**/*.map":true,
-        "**/*.elf":true,
-        "**/*.hex":true,
-        "**/*.ld":true,
-        "**/*.bin":true,
-        "**/out":true,
-        "**/debug": true
-    },
-    "files.associations": {
-        "hardware.h": "c",
-        "lib.h": "c",
-        "cstdlib": "c",
-        "stdc++.h": "c",
-        "string": "c",
-        "streambuf": "c",
-        "stdarg.h": "c",
-        "string.h": "c",
-        "condition_variable": "c",
-        "future": "c",
-        "mutex": "c",
-        "shared_mutex": "c",
-        "queue": "c",
-        "deque": "c"
-    },
-    "explorer.sortOrder": "type",
-    "C_Cpp.dimInactiveRegions": false
+    //"cortex-debug.openocdPath": ""
+    //"cortex-debug.armToolchainPath": ""
 }
