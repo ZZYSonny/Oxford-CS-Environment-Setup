@@ -4,6 +4,7 @@ Basically, you will need `gcc`, `gdb`, `make`, a serial terminal emulator.
 
 ### Windows
 Note that WSL1 and WSL2 does not have full access to USB for now. All these package below works in native windows.
+
 [GNU Toolchain](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads) used for compiling source file
 
 [GNU Make](http://gnuwin32.sourceforge.net/packages/make.htm) Sadly not included in tool chain above and gnuwin32 make does not work well. Not required for the example project folder.
