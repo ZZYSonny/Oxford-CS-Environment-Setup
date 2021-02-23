@@ -5,8 +5,11 @@ Basically, you will need `gcc`, `gdb`, `make`, a serial terminal emulator.
 ### Windows
 Note that WSL1 and WSL2 does not have full access to USB for now. All these package below works in native windows.
 [GNU Toolchain](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads) used for compiling source file
+
 [GNU Make](http://gnuwin32.sourceforge.net/packages/make.htm) Sadly not included in tool chain above and gnuwin32 make does not work well. Not required for the example project folder.
+
 [OpenOCD Binary](https://github.com/xpack-dev-tools/openocd-xpack/releases) a bridge between GDB and device
+
 [Tio Serial Terminal Emulator](https://github.com/tio/tio) Sadly no easy access to compiled binary online. One way to get it is through MSYS2. Not required for the example project folder.
 
 Make sure binary are included in `PATH`.
@@ -31,7 +34,9 @@ Instruction Missing. (Sadly Spivey removed the page.)
 
 ## VSCode
 [ARM](https://marketplace.visualstudio.com/items?itemName=dan-c-underwood.arm) Highlighting for assembly files.
+
 [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) Syntax Checking for C/C++ files.
+
 [Cortex-Debug](https://marketplace.visualstudio.com/items?itemName=marus25.cortex-debug) Support loading elf to MicroBit. Debug binaries, showing arm assembly and register value at each step.
 
 You can also install these extension by pressing `Crtl+P` and input 
@@ -52,4 +57,5 @@ ext install marus25.cortex-debug
 ![](pic/assembly.png)
 
 //Breakpoint at init function is specified in [launch.json](project/.vscode/launch.json). Without this settings, initial debugger behavior is a bit weird. 
+
 //Project file stripped down from 2019-2020 Digital system course practical.
