@@ -1,6 +1,7 @@
 # Compiler Setup for uBuntu
 ## Screenshot
 ![](pic/document.png)
+![](pic/debug.jpg)
 ## Environment
 ### OCaml
 The default version of `ocaml` from `apt` may not match requirement of tools we are going to install later. Below is steps to install a specific version of `ocaml` through `opam`.

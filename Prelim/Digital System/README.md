@@ -57,13 +57,16 @@ ext install marus25.cortex-debug
 - Open file `led.c`, press `F5` to start running and debugging
 - You can now see breakpoint met at init function.
 - After pressing `F5`, the program resumes, showing `SEVEN STARS OF DEATH` periodically. 
+
 ![](pic/source.png)
 - Or you can also Press `F1`, input `disassembly`, choose `Cortex-Debug: Set Force Disassembly`, then choose `Force`. You will see the second picture below.
+
 ![](pic/assembly.png)
 
 ### Assembly Example
 - Open file `foo_break`, press `F5` to run.
 - Step into foo function, or add a breakpoint inside `foo.s`
+
 ![](pic/foo.png)
 
 ### Assembly + Serial Terminal Example
