@@ -5,14 +5,16 @@
 // @description  try to take over the world!
 // @author       ZZYSonny
 // @match        https://login.microsoftonline.com/*
+// @require      https://raw.githubusercontent.com/jiangts/JS-OTP/master/dist/jsOTP.min.js
 // @grant        none
-// @run-at       document-body
+// @run-at       document-idle
 // ==/UserScript==
 
-(function() {
+(function () {
     'use strict';
-
-    const email = "your_email_address";
+    var totp = new jsOTP.totp();
+    const secret = "your_authenticator_secret";
+    const email = "your_email";
     const password = "your_password";
     function inputThenClick(inputName, text, buttonid) {
         var div = document.getElementsByName(inputName)[0];
@@ -23,62 +25,52 @@
         document.getElementById(buttonid).click();
     }
 
-    function waitLoginHeader(callback) {
-        var timer = setInterval(function () {
-            var loginHeader = document.getElementById("loginHeader");
-            if (loginHeader != null) {
-                callback();
-                clearInterval(timer);
-            }
-        }, 200);
-    }
-
-    function waitBannerLogo(callback) {
-        var timer = setInterval(function () {
-            var logo = document.getElementsByClassName("banner-logo")[0];
-            if (logo != null) {
-                if (logo.src.indexOf("637405101442943286") != -1) {
-                    callback();
+    function waitUntil(cond) {
+        return new Promise((resolve, reject) => {
+            var timer = setInterval(() => {
+                if (cond()) {
                     clearInterval(timer);
+                    resolve();
                 }
-            }
-        }, 200);
+            }, 200);
+        })
     }
 
-    function waitCond(cond, callback) {
-        var timer = setInterval(function () {
-            if (cond()) {
-                callback();
-                clearInterval(timer);
-            }
-        }, 200);
+    function waitUntilElement(id) {
+        return waitUntil(() => document.getElementById(id) != null);
     }
 
-    function waitCheckDo(f, cond, callback) {
-        f(() => waitCond(cond, callback))
+    function elementTextStartWith(id, text) {
+        var element = document.getElementById(id);
+        return element != null && element.innerText.startsWith(text);
     }
 
-    //idp email
-    waitCheckDo(waitBannerLogo,
-        () => document.getElementById("loginHeader").innerText.startsWith("登录"),
-        () => inputThenClick("loginfmt", email, "idSIButton9"))
+    waitUntil(() => {
+        //wait until oxford banner logo appears
+        var logo = document.getElementsByClassName("banner-logo")[0];
+        return logo != null && logo.src.indexOf("637405101442943286") != -1;
+    }).then(() => {
+        //wait until login header appear
+        waitUntilElement('loginHeader').then(() => {
+            waitUntil(() => elementTextStartWith('loginHeader', '选择帐户'))
+                .then(() => document.getElementsByClassName("table-row")[0].click());
 
-    //idp password
-    waitCheckDo(waitBannerLogo,
-        () => document.getElementById("loginHeader").innerText.startsWith("输入密码"),
-        () => inputThenClick("passwd", password, "idSIButton9"))
+            waitUntil(() => elementTextStartWith('loginHeader', '登录'))
+                .then(() => inputThenClick("loginfmt", email, "idSIButton9"));
 
-    //choose account
-    waitCheckDo(waitBannerLogo,
-        () => document.getElementById("loginHeader").innerText.startsWith("选择帐户"),
-        () => document.getElementsByClassName("table-row")[0].click())
+            waitUntil(() => elementTextStartWith('loginHeader', '输入密码'))
+                .then(() => inputThenClick("passwd", password, "idSIButton9"));
+        })
+        //wait until otc appear
+        waitUntilElement('idDiv_SAOTCC_Title').then(() => {
+            waitUntil(() => elementTextStartWith('idDiv_SAOTCC_Title', '输入验证码'))
+                .then(() => inputThenClick("otc", totp.getOtp(secret), "idSubmit_SAOTCC_Continue"));
+        });
+    })
 
-    //outlook
-    waitCheckDo(waitLoginHeader, () => {
-        var loginHeader = document.getElementById("loginHeader");
-        return loginHeader.innerText.startsWith("选择帐户") && loginHeader.innerText.endsWith("Outlook");
-    }, () => document.getElementsByClassName("table-row")[0].click())
-
-
-
+    waitUntilElement('loginHeader').then(() => {
+        //outlook
+        waitUntil(() => elementTextStartWith('loginHeader', '选择帐户'))
+            .then(() => document.getElementsByClassName("table-row")[0].click())
+    })
 })();
